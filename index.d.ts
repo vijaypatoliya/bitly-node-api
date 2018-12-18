@@ -42,6 +42,24 @@ declare class User extends BaseClient {
 
 }
 
+declare class Bitlinks extends BaseClient {
+
+  getBitlinkMetricsByCountries(bitlink: string, params: any): Promise<any>;
+  getBitlinkPublicInfo(params: any): Promise<any>;
+  getBitlinkMetricsByReferrers(bitlink: string, params: any): Promise<any>;
+  createBitlink(params: any): Promise<any>;
+  getBitlinksByGroup(group_guid: string, params: any): Promise<any>;
+  getBitlinkClicksSummary(bitlink: string, params: any): Promise<any>;
+  getBitlinkClicks(bitlink: string, params: any): Promise<any>;
+  updateBitlink(bitlink: string, params: any): Promise<any>;
+  getBitlinkInfo(bitlink: string): Promise<any>;
+  shortenLink(params: any): Promise<any>;
+  getBitlinkMetricsByReferrersByDomain(bitlink: string, params: any): Promise<any>;
+  getGroupSortedBitlinks(group_guid: string, sort: string, params: any): Promise<any>;
+  getBitlinkMetricsByReferringDomains(bitlink: string, params: any): Promise<any>;
+
+}
+
 declare class bitlyNodeClient {
 
   constructor()
@@ -58,6 +76,7 @@ declare class bitlyNodeClient {
   groups: Groups;
   organizations: Organizations;
   user: User;
+  bitlinks: Bitlinks;
 }
 
 declare namespace bitlyNodeClient {
