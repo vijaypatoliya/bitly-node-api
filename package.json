@@ -1,13 +1,22 @@
 {
   "name": "bitly-node-api",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "bitly api wrapper",
   "keywords": [
     "bitly",
     "bitly node",
     "bitly node API",
     "bitly API",
-    "bitly sdk"
+    "bitly sdk",
+    "bitly groups API",
+    "bitly organizations API",
+    "bitly user API",
+    "bitly bitlinks API",
+    "bitly-node",
+    "bitly-node-api",
+    "bitly-client",
+    "bitly-sdk",
+    "bitly-bitlinks"
   ],
   "homepage": "https://github.com/vijaypatoliya/bitly-node-api",
   "author": "Vijay Patoliya<osi.vijay@gmail.com>",

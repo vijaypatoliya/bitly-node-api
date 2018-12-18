@@ -349,3 +349,286 @@ describe('GetOAuthApp', function () {
     }
   });
 });
+
+describe('BitlinkMetricsByCountries', function () {
+  it('It should get metrics about the countries referring click traffic to a single Bitlink', async function () {
+    var bitlink = 'bitly.is/2rAZFZ1';
+    var data = {
+      unit: 'month'
+    }
+    try {
+      var response = await bitly.bitlinks.getBitlinkMetricsByCountries(bitlink, data).catch(error => {
+        if (error) {
+          console.log('error ', error);
+          return;
+        }
+      });
+      console.log('response', response);
+      expect(response).to.be.a('object');
+    } catch (error) {
+      console.log('error ', error);
+      expect(response).to.be.a(undefined);
+    }
+  });
+});
+
+describe('BitlinkPublicInfo', function () {
+  it('It should get public information for a Bitlink', async function () {
+    var data = {
+      bitlink_id: 'bitly.is/2rAZFZ1'
+    }
+    try {
+      var response = await bitly.bitlinks.getBitlinkPublicInfo(data).catch(error => {
+        if (error) {
+          console.log('error ', error);
+          return;
+        }
+      });
+      console.log('response', response);
+      expect(response).to.be.a('object');
+    } catch (error) {
+      console.log('error ', error);
+      expect(response).to.be.a(undefined);
+    }
+  });
+});
+
+describe('BitlinkMetricsByReferrers', function () {
+  it('It should get metrics about the referrers referring click traffic to a single Bitlink', async function () {
+    var bitlink = 'bitly.is/2rAZFZ1';
+    var data = {
+      unit: 'minute'
+    }
+    try {
+      var response = await bitly.bitlinks.getBitlinkMetricsByReferrers(bitlink, data).catch(error => {
+        if (error) {
+          console.log('error ', error);
+          return;
+        }
+      });
+      console.log('response', response);
+      expect(response).to.be.a('object');
+    } catch (error) {
+      console.log('error ', error);
+      expect(response).to.be.a(undefined);
+    }
+  });
+});
+
+describe('CreateBitlink', function () {
+  it('It should convert a long url to a Bitlink and set additional parameters', async function () {
+    var data = {
+      long_url: 'https://www.google.com'
+    }
+    try {
+      var response = await bitly.bitlinks.createBitlink(data).catch(error => {
+        if (error) {
+          console.log('error ', error);
+          return;
+        }
+      });
+      console.log('response', response);
+      expect(response).to.be.a('object');
+    } catch (error) {
+      console.log('error ', error);
+      expect(response).to.be.a(undefined);
+    }
+  });
+});
+
+describe('BitlinksByGroup', function () {
+  it('It should get a paginated collection of Bitlinks for a Group', async function () {
+    var group_guid = 'Bibh7CqXlyA';
+    var data = {
+      size: 10,
+      tags: 'getGroupPreferences'
+    }
+    try {
+      var response = await bitly.bitlinks.getBitlinksByGroup(group_guid, data).catch(error => {
+        if (error) {
+          console.log('error ', error);
+          return;
+        }
+      });
+      console.log('response', response);
+      expect(response).to.be.a('object');
+    } catch (error) {
+      console.log('error ', error);
+      expect(response).to.be.a(undefined);
+    }
+  });
+});
+
+describe('BitlinkClicksSummary', function () {
+  it('It should get the click counts for a specified Bitlink', async function () {
+    var bitlink = 'bitly.is/2rAZFZ1';
+    var data = {
+      unit: 'hour'
+    }
+    try {
+      var response = await bitly.bitlinks.getBitlinkClicksSummary(bitlink, data).catch(error => {
+        if (error) {
+          console.log('error ', error);
+          return;
+        }
+      });
+      console.log('response', response);
+      expect(response).to.be.a('object');
+    } catch (error) {
+      console.log('error ', error);
+      expect(response).to.be.a(undefined);
+    }
+  });
+});
+
+describe('BitlinkClicks', function () {
+  it('It should get the click counts for a specified Bitlink, This returns an array with clicks based on a date', async function () {
+    var bitlink = 'bitly.is/2rAZFZ1';
+    var data = {
+      unit: 'hour'
+    }
+    try {
+      var response = await bitly.bitlinks.getBitlinkClicks(bitlink, data).catch(error => {
+        if (error) {
+          console.log('error ', error);
+          return;
+        }
+      });
+      console.log('response', response);
+      expect(response).to.be.a('object');
+    } catch (error) {
+      console.log('error ', error);
+      expect(response).to.be.a(undefined);
+    }
+  });
+});
+
+describe('UpdateBitlink', function () {
+  it('It should update information for a Bitlink', async function () {
+    var bitlink = 'bitly.is/2rAZFZ1';
+    var data = {
+      title: 'Get Group Preferences',
+      created_by: 'Patoliya'
+    }
+    try {
+      var response = await bitly.bitlinks.updateBitlink(bitlink, data).catch(error => {
+        if (error) {
+          console.log('error ', error);
+          return;
+        }
+      });
+      console.log('response', response);
+      expect(response).to.be.a('object');
+    } catch (error) {
+      console.log('error ', error);
+      expect(response).to.be.a(undefined);
+    }
+  });
+});
+
+describe('BitlinkInfo', function () {
+  it('It should get information for a Bitlink', async function () {
+    var bitlink = 'bitly.is/2rAZFZ1';
+    try {
+      var response = await bitly.bitlinks.getBitlinkInfo(bitlink).catch(error => {
+        if (error) {
+          console.log('error ', error);
+          return;
+        }
+      });
+      console.log('response', response);
+      expect(response).to.be.a('object');
+    } catch (error) {
+      console.log('error ', error);
+      expect(response).to.be.a(undefined);
+    }
+  });
+});
+
+describe('ShortenLink', function () {
+  it('It should convert a long url to a Bitlink', async function () {
+    var data = {
+      long_url: 'https://www.facebook.com'
+    }
+    try {
+      var response = await bitly.bitlinks.shortenLink(data).catch(error => {
+        if (error) {
+          console.log('error ', error);
+          return;
+        }
+      });
+      console.log('response', response);
+      expect(response).to.be.a('object');
+    } catch (error) {
+      console.log('error ', error);
+      expect(response).to.be.a(undefined);
+    }
+  });
+});
+
+describe('BitlinkMetricsByReferrersByDomain', function () {
+  it('It should group referrers metrics about a single Bitlink', async function () {
+    var bitlink = 'bitly.is/2rAZFZ1';
+    var data = {
+      unit: 'minute'
+    }
+    try {
+      var response = await bitly.bitlinks.getBitlinkMetricsByReferrersByDomain(bitlink, data).catch(error => {
+        if (error) {
+          console.log('error ', error);
+          return;
+        }
+      });
+      console.log('response', response);
+      expect(response).to.be.a('object');
+    } catch (error) {
+      console.log('error ', error);
+      expect(response).to.be.a(undefined);
+    }
+  });
+});
+
+describe('GroupSortedBitlinks', function () {
+  it('It should get a paginated response for Bitlinks that are sorted for the Group', async function () {
+    var group_guid = 'Bibh7CqXlyA';
+    var sort = 'clicks';
+    var data = {
+      size: 10
+    }
+    try {
+      var response = await bitly.bitlinks.getGroupSortedBitlinks(group_guid, sort, data).catch(error => {
+        if (error) {
+          console.log('error ', error);
+          return;
+        }
+      });
+      console.log('response', response);
+      expect(response).to.be.a('object');
+    } catch (error) {
+      console.log('error ', error);
+      expect(response).to.be.a(undefined);
+    }
+  });
+});
+
+describe('BitlinkMetricsByReferringDomains', function () {
+  it('It should get rollup the click counts to a referrer about a single Bitlink', async function () {
+    var bitlink = 'bitly.is/2rAZFZ1';
+    var data = {
+      size: 10
+    }
+    try {
+      var response = await bitly.bitlinks.getBitlinkMetricsByReferringDomains(bitlink, data).catch(error => {
+        if (error) {
+          console.log('error ', error);
+          return;
+        }
+      });
+      console.log('response', response);
+      expect(response).to.be.a('object');
+    } catch (error) {
+      console.log('error ', error);
+      expect(response).to.be.a(undefined);
+    }
+  });
+});
