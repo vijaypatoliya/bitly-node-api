@@ -3,7 +3,7 @@
 
 This API supported Bitly standard REST API that accepts/returns JSON requests. Here is the [API reference] (https://dev.bitly.com/v4_documentation.html)
 
-You can find [examples of JavaScript](https://github.com/vijaypatoliya/bitly-node-api/tree/master/examples). This will help you for faster implementation of Bitly APIs.
+You can find [examples of JavaScript and TypeScript](https://github.com/vijaypatoliya/bitly-node-api/tree/master/examples). This will help you for faster implementation of Bitly APIs.
 
 ##### It does supports EcmaScript 5, EcmaScript 6,  EcmaScript 8, TypeScript, async-await, Promises, Callback!!!
 ##### It does also supports for AWS Lambda like serverless cloud function call.
@@ -45,6 +45,13 @@ var response = bitly.application.getOAuthToken(options);
 if(response && response.access_token) {
   bitly.setUserToken(response.access_token);
 }
+```
+
+## Configuration Using TypeScript
+```js
+import * as BitlyAPI from 'bitly-node-api';
+const bitly = new BitlyAPI();
+bitly.setUserToken('YOUR_ACCESS_TOKEN');
 ```
 
 ## Test Cases
