@@ -1,3 +1,6 @@
+0.0.3 December 19, 2018
+  - Typescript examples and test cases
+
 0.0.2 December 18, 2018
   - Initial release with Bitlinks and Javascript examples
 

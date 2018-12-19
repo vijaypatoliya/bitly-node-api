@@ -1,6 +1,6 @@
 'use strict';
 
-var userToken = process.env.BITLY_USER_TOKEN || 'YOUR_ACCESS_TOKEN';
+var userToken = process.env.BITLY_USER_TOKEN;
 
 var bitly = require('../../../lib')(userToken);
 

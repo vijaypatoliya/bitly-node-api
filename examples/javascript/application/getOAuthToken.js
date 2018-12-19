@@ -1,7 +1,7 @@
 'use strict';
 
-var clientId = process.env.BITLY_CLIENT_ID || 'YOUR_CLIENT_ID';
-var clientSecret = process.env.BITLY_CLIENT_SECRET || 'YOUR_CLIENT_SECRET';
+var clientId = process.env.BITLY_CLIENT_ID;
+var clientSecret = process.env.BITLY_CLIENT_SECRET;
 
 var bitly = require('../../../lib')();
 
