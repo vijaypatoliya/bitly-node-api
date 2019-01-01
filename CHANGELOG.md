@@ -1,3 +1,6 @@
+0.0.4 January 01, 2019
+  - Added support for node v4 to v10
+  
 0.0.3 December 19, 2018
   - Typescript examples and test cases
 
