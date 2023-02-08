@@ -25,6 +25,7 @@ var applicationRequest = async function () {
       bitly.setUserToken(response.access_token);
     }
   } catch (error) {
+    console.log(error)
     return;
   }
 };

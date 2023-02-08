@@ -1,3 +1,6 @@
+0.0.5 Feb 09, 2023
+  - Added new apis support
+
 0.0.4 January 01, 2019
   - Added support for node v4 to v10
   
