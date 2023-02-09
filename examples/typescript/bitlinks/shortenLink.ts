@@ -10,18 +10,23 @@ bitly.setUserToken(userToken);
 
 var bitlinksRequest = async function () {
   /**
-   * 
    * passing body parameters 
    * -------------------
    * 
-   * bitlink_id {string}
+   * long_url {string}
+   * domain {string}
+   * group_guid {string}
    * 
    */
+
   var payload = {
-    bitlink_id: 'string'
+    long_url: 'string',
+    domain: 'number',
+    group_guid: 'string',
   }
+
   try {
-    var response = await bitly.bitlinks.expand(payload);
+    var response = await bitly.bitlinks.shortenLink(payload);
   } catch (error) {
     return;
   }

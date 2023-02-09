@@ -22,7 +22,7 @@ var groupsRequest = async function () {
   var group_guid = 'string';
 
   try {
-    var response = await bitly.groups.getclicks(group_guid);
+    var response = await bitly.groups.getClicks(group_guid);
   } catch (error) {
     return;
   }

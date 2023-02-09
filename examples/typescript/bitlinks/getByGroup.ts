@@ -34,7 +34,7 @@ var bitlinksRequest = async function () {
    * lunchpad_ids {array}
    * encoding_login {array}
    */
-  var group_guid = 'Bibh7CqXlyA';
+  var group_guid = 'string';
   var payload = {
     size: 'number',
     page: 'number',

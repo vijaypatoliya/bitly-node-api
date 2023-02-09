@@ -13,9 +13,9 @@ var applicationRequest = async function () {
    * passing parameters 
    * -------------------
    * 
-   * client_id
+   * client_id {string}
    */
-  var client_id = 'deaf3dd0e991db18740dc50b4161253251348a20';
+  var client_id = 'string';
   try {
     var response = await bitly.application.getOAuthApp(client_id);
   } catch (error) {

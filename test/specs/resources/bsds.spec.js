@@ -8,7 +8,7 @@ var expect = chai.expect;
 
 var bitly = require("../../../lib")(userToken);
 
-describe("bsds.getGroupOverrids()", function () {
+describe("bsds.getGroupOverrides()", function () {
   it("It should get group overrids", async function () {
     var group_guid = "string";
     var payload = {
@@ -21,7 +21,7 @@ describe("bsds.getGroupOverrids()", function () {
 
     try {
       var response = await bitly.bsds
-        .getGroupOverrids(group_guid, payload)
+        .getGroupOverrides(group_guid, payload)
         .catch((error) => {
           if (error) {
             console.log("error ", error);

@@ -36,7 +36,7 @@ var organizationsRequest = async function () {
   }
 
   try {
-    var response = await bitly.bsds.getGroupOverrids(group_guid, payload);
+    var response = await bitly.bsds.getGroupOverrides(group_guid, payload);
   } catch (error) {
     return;
   }

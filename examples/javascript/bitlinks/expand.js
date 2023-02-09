@@ -10,12 +10,14 @@ var bitlinksRequest = async function () {
    * passing body parameters 
    * -------------------
    * 
-   * bitlink {string}
+   * bitlink_id {string}
    * 
    */
-  var bitlink = 'bitly.is/2rAZFZ1';
+  var payload = {
+    bitlink_id: 'string'
+  }
   try {
-    var response = await bitly.bitlinks.expand(bitlink);
+    var response = await bitly.bitlinks.expand(payload);
   } catch (error) {
     return;
   }

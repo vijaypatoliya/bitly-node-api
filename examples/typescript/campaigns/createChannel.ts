@@ -38,7 +38,7 @@ var userRequest = async function () {
   }
 
   try {
-    var response = await bitly.campaigns.crateChannel(payload);
+    var response = await bitly.campaigns.createChannel(payload);
   } catch (error) {
     return;
   }

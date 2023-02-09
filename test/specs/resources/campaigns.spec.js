@@ -33,7 +33,7 @@ describe("campaigns.create()", function () {
   });
 });
 
-describe("campaigns.crateChannel()", function () {
+describe("campaigns.createChannel()", function () {
   it("It should crate channel", async function () {
     var payload = {
       name: "string",
@@ -51,7 +51,7 @@ describe("campaigns.crateChannel()", function () {
 
     try {
       var response = await bitly.campaigns
-        .crateChannel(payload)
+        .createChannel(payload)
         .catch((error) => {
           if (error) {
             console.log("error ", error);

@@ -23,7 +23,7 @@ var groupsRequest = async function () {
    * 
    * 
    */
-  var group_guid = 'Bibh7CqXlyA';
+  var group_guid = 'string';
   var payload = {
     name: 'string',
     organization_guid: 'string',

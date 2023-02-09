@@ -2,11 +2,7 @@
 
 var userToken = process.env.BITLY_USER_TOKEN;
 
-import * as BitlyAPI from 'bitly-node-api';
-
-const bitly = new BitlyAPI();
-
-bitly.setUserToken(userToken);
+var bitly = require('../../../lib')(userToken);
 
 var bitlinksRequest = async function () {
   /**
@@ -30,7 +26,7 @@ var bitlinksRequest = async function () {
   }
 
   try {
-    var response = await bitly.customBitlinks.getMetricsForCustomDestination(custom_bitlink, payload);
+    var response = await bitly.customBitlinks.getClicks(custom_bitlink, payload);
   } catch (error) {
     return;
   }

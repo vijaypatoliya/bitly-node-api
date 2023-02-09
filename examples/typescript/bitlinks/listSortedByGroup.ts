@@ -10,22 +10,30 @@ bitly.setUserToken(userToken);
 
 var bitlinksRequest = async function () {
   /**
-   * passing parameters 
+   * 
+   * passing path parameters
+   * -----------------------
+   * group_guid {string}
+   * sort {string}
+   * 
+   * passing query parameters 
    * -------------------
    * 
-   * group_guid (required)
-   * sort
+   * unit {string}
+   * units {number}
+   * unit_reference {string}
+   * size {number}
    * 
-   * (optional)
-   * unit (Default: "day", Enum:["minute", "hour", "day", "week", "month"])
-   * units
-   * size
-   * unit_reference
    */
-  var group_guid = 'Bibh7CqXlyA';
-  var sort = 'clicks';
+
+  var group_guid = 'string';
+  var sort = 'string';
+
   var payload = {
-    size: 10
+    unit: 'string',
+    units: 'string',
+    unit_reference: 'string',
+    size: 'number'
   }
   try {
     var response = await bitly.bitlinks.listSortedByGroup(group_guid, sort, payload);

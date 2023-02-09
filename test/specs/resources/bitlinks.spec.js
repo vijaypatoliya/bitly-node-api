@@ -115,7 +115,7 @@ describe("bitlinks.expand()", function () {
       var response = await bitly.bitlinks.expand(bitlink).catch((error) => {
         if (error) {
           console.log("error ", error);
-          return;
+          return {};
         }
       });
       console.log("response", response);
@@ -420,16 +420,21 @@ describe("bitlinks.getQR()", function () {
   });
 });
 
-describe("bitlinks.listSortedByGroup()", function () {
-  it("It should list sorted by group", async function () {
-    var group_guid = "Bibh7CqXlyA";
-    var sort = "clicks";
+describe("bitlinks.listSortedForGroup()", function () {
+  it("It should list sorted for group", async function () {
+    var group_guid = "string";
+    var sort = "string";
+
     var payload = {
-      size: 10,
+      unit: "string",
+      units: "string",
+      unit_reference: "string",
+      size: "number",
     };
+
     try {
       var response = await bitly.bitlinks
-        .listSortedByGroup(group_guid, sort, payload)
+        .listSortedForGroup(group_guid, sort, payload)
         .catch((error) => {
           if (error) {
             console.log("error ", error);
@@ -445,21 +450,17 @@ describe("bitlinks.listSortedByGroup()", function () {
   });
 });
 
-describe("bitlinks.shortedLink()", function () {
-  it("It should sorted link", async function () {
-    var group_guid = "string";
-    var sort = "string";
-
+describe("bitlinks.shortenLink()", function () {
+  it("It should sorten link", async function () {
     var payload = {
-      unit: "string",
-      units: "number",
-      unit_reference: "string",
-      size: "number",
+      long_url: "string",
+      domain: "number",
+      group_guid: "string",
     };
 
     try {
       var response = await bitly.bitlinks
-        .shortedLink(group_guid, sort, payload)
+        .shortenLink(payload)
         .catch((error) => {
           if (error) {
             console.log("error ", error);

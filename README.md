@@ -486,7 +486,7 @@ var payload = {
 };
 
 try {
-  var response = await bitly.bsds.getGroupOverrids(group_guid, payload);
+  var response = await bitly.bsds.getGroupOverrides(group_guid, payload);
 } catch (error) {
   return;
 }
@@ -537,7 +537,7 @@ var payload = {
 };
 
 try {
-  var response = await bitly.campaigns.crateChannel(payload);
+  var response = await bitly.campaigns.createChannel(payload);
 } catch (error) {
   return;
 }
@@ -807,7 +807,7 @@ try {
 var group_guid = "string";
 
 try {
-  var response = await bitly.groups.getclicks(group_guid);
+  var response = await bitly.groups.getClicks(group_guid);
 } catch (error) {
   return;
 }

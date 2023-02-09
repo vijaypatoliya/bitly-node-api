@@ -29,8 +29,8 @@ declare class Bitlinks extends BaseClient {
   getMetricsByReferresDomain(bitlink: string, payload: any): Promise<any>;
   getMetricsByReferringDomain(bitlink: string, payload: any): Promise<any>;
   getQR(bitlink: string): Promise<any>;
-  listSortedByGroup(group_guid: string, sort: string, payload: any): Promise<any>;
-  shortedLink(group_guid: string, sort: string, payload: any): Promise<any>;
+  listSortedForGroup(group_guid: string, sort: string, payload: any): Promise<any>;
+  shortenLink(payload: any): Promise<any>;
   update(bitlink: string, payload: any): Promise<any>;
   updateQR(bitlink: string, payload: any): Promise<any>;
 
@@ -55,8 +55,8 @@ declare class Campaigns extends BaseClient {
 declare class CustomBitlinks extends BaseClient {
   add(payload: any): Promise<any>;
   get(custom_bitlink: string): Promise<any>;
-  getClicksForEntireHistory(custom_bitlink: string, payload: any): Promise<any>;
-  getMetricsForCustomDestination(custom_bitlink: string, payload: any): Promise<any>;
+  getClicks(custom_bitlink: string, payload: any): Promise<any>;
+  getMetrics(custom_bitlink: string, payload: any): Promise<any>;
   update(custom_bitlink: string, payload: any): Promise<any>;
 }
 

@@ -6,16 +6,16 @@ var bitly = require('../../../lib')(userToken);
 
 var bitlinksRequest = async function () {
   /**
-   * passing parameters 
-   * -------------------
    * 
+   * passing path parameters
+   * -----------------------
    * group_guid {string}
    * sort {string}
    * 
-   * passing query parameters
-   * ------------------------
+   * passing query parameters 
+   * -------------------
    * 
-   * unit {string} (Default: "bit.ly")
+   * unit {string}
    * units {number}
    * unit_reference {string}
    * size {number}
@@ -27,13 +27,12 @@ var bitlinksRequest = async function () {
 
   var payload = {
     unit: 'string',
-    units: 'number',
+    units: 'string',
     unit_reference: 'string',
-    size: 'number',
+    size: 'number'
   }
-
   try {
-    var response = await bitly.bitlinks.shortedLink(group_guid, sort, payload);
+    var response = await bitly.bitlinks.listSortedByGroup(group_guid, sort, payload);
   } catch (error) {
     return;
   }

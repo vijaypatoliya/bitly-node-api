@@ -137,7 +137,7 @@ describe("groups.getclicks()", function () {
     var group_guid = "string";
 
     try {
-      var response = await bitly.groups.getclicks(group_guid).catch((error) => {
+      var response = await bitly.groups.getClicks(group_guid).catch((error) => {
         if (error) {
           console.log("error ", error);
           return;

@@ -39,7 +39,7 @@ describe("customBitlinks.get()", function () {
         .catch((error) => {
           if (error) {
             console.log("error ", error);
-            return;
+            return {};
           }
         });
       console.log("response", response);
@@ -51,7 +51,7 @@ describe("customBitlinks.get()", function () {
   });
 });
 
-describe("customBitlinks.getClicksForEntireHistory()", function () {
+describe("customBitlinks.getClicks()", function () {
   it("It should get clicks for entire history", async function () {
     var custom_bitlink = "string";
     var payload = {
@@ -62,7 +62,7 @@ describe("customBitlinks.getClicksForEntireHistory()", function () {
 
     try {
       var response = await bitly.customBitlinks
-        .getClicksForEntireHistory(custom_bitlink, payload)
+        .getClicks(custom_bitlink, payload)
         .catch((error) => {
           if (error) {
             console.log("error ", error);
@@ -78,8 +78,8 @@ describe("customBitlinks.getClicksForEntireHistory()", function () {
   });
 });
 
-describe("customBitlinks.getMetricsForCustomDestination()", function () {
-  it("It should get metrics for custom destination", async function () {
+describe("customBitlinks.getMetrics()", function () {
+  it("It should get metrics", async function () {
     var custom_bitlink = "string";
     var payload = {
       units: "integer",
@@ -89,7 +89,7 @@ describe("customBitlinks.getMetricsForCustomDestination()", function () {
 
     try {
       var response = await bitly.customBitlinks
-        .getMetricsForCustomDestination(custom_bitlink, payload)
+        .getMetrics(custom_bitlink, payload)
         .catch((error) => {
           if (error) {
             console.log("error ", error);

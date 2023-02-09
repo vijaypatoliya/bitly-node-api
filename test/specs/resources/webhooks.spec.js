@@ -91,7 +91,6 @@ describe("webhooks.get()", function () {
             return;
           }
         });
-      console.log("response", response);
       expect(response).to.be.a("object");
     } catch (error) {
       console.log("error ", error);
@@ -165,10 +164,9 @@ describe("webhooks.verify()", function () {
         .catch((error) => {
           if (error) {
             console.log("error ", error);
-            return;
+            return {};
           }
         });
-      console.log("response", response);
       expect(response).to.be.a("object");
     } catch (error) {
       console.log("error ", error);
