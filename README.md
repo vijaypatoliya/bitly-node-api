@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/vijaypatoliya/bitly-node-api.svg?branch=master)](https://travis-ci.org/vijaypatoliya/bitly-node-api) [![Stackoverflow Thread](https://img.shields.io/badge/stackoverflow-bitly--node--api-yellowgreen.svg)](https://stackoverflow.com/search?q=nodejs-bitly-node-api)
 
-This API supported Bitly standard REST API that accepts/returns JSON requests. Here is the [API reference] (https://dev.bitly.com/v4_documentation.html)
+This API supported Bitly standard REST API that accepts/returns JSON requests. Here is the [API reference](https://dev.bitly.com/v4_documentation.html)
 
 You can find [examples of JavaScript and TypeScript](https://github.com/vijaypatoliya/bitly-node-api/tree/master/examples). This will help you for faster implementation of Bitly APIs.
 
@@ -14,16 +14,28 @@ You can find [examples of JavaScript and TypeScript](https://github.com/vijaypat
 
 ##### All methods support Promise and Callback both.
 
+##### Please Feel free to create issue for any help!
+
+##### All developers/contributors are requested to open Pull Request/Merge Request on develop branch. 
+
+##### Please make sure Test Cases be passed. 
+
 ## Get started
 
 Using the Bitly API wrapper for Node.js is really simple.
 Given that you already have a Node.js project with NPM setup just follow these steps:
 
-**Install the dependency**
+## Installation
+```bash
+npm install bitly-node-api --save
+```
 
-```
-npm install --save bitly-node-api
-```
+## Pull Request
+- Contributors can send their Pull Request to `develop` branch.
+- Kindly validate test cases & linting before opening new PR.
+
+## Do you need an expert?
+Are you finding a developer or team for your world-class enterprise product development? If yes, please send email to. Submit your project request [here](mailto:osi.vijay@gmail.com). Originally by [Vijay Patoliya](https://github.com/vijaypatoliya).
 
 ## Configuration Using JavaScript
 
@@ -37,7 +49,7 @@ export BITLY_USER_TOKEN=ACCESS_TOKEN
 var bitly = require("bitly-node-api")("YOUR_ACCESS_TOKEN");
 ```
 
-**If you have not access token, Get access token using below configuration and example**
+**If you don't have access token then get access token using below configuration and example**
 
 ```js
 var bitly = require("bitly-node-api");
@@ -62,27 +74,12 @@ const bitly = new BitlyAPI();
 bitly.setUserToken("YOUR_ACCESS_TOKEN");
 ```
 
-## Test Cases
-
-```bash
-npm run test.mocha
-```
-
-## Debugging
-
-```bash
-export DEBUG=bitly:*
-```
 
 ```
-Originally by [Vijay Patoliya](https://github.com/vijaypatoliya) (osi.vijay@gmail.com).
+Originally by osi.vijay@gmail.com : [Vijay Patoliya](https://github.com/vijaypatoliya).
 ```
 
 ## Examples
-
----
-
-## Index
 
 1. [BITLINKS](#bitlinks)
 
