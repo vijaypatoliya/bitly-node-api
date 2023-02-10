@@ -12,12 +12,12 @@ var applicationRequest = async function () {
    * passing parameters 
    * -------------------
    * 
-   * username
-   * password
+   * username {string}
+   * password {string}
    */
   var options = {
-    username: 'Username',
-    password: 'Password'
+    username: 'username',
+    password: 'password'
   };
   try {
     var response = await bitly.application.getOAuthToken(options);

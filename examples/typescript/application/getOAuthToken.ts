@@ -1,23 +1,34 @@
 'use strict';
 
-const clientId = process.env.BITLY_CLIENT_ID;
-const clientSecret = process.env.BITLY_CLIENT_SECRET;
+var clientId = process.env.BITLY_CLIENT_ID;
+var clientSecret = process.env.BITLY_CLIENT_SECRET;
+
 import * as BitlyAPI from 'bitly-node-api';
 
 const bitly = new BitlyAPI();
 
-const applicationRequest = async function () {
+var applicationRequest = async function () {
   bitly.setApiKey(clientId, clientSecret);
   
-  const options = {
-    username: 'Username',
-    password: 'Password'
+  /**
+   * passing parameters 
+   * -------------------
+   * 
+   * username {string}
+   * password {string}
+   */
+  var options = {
+    username: 'username',
+    password: 'password'
   };
-  const response = await bitly.application.getOAuthToken(options).catch(error => {
-    if (error) {
-      return;
+  try {
+    var response = await bitly.application.getOAuthToken(options);
+    if(response && response.access_token) {
+      bitly.setUserToken(response.access_token);
     }
-  });
+  } catch (error) {
+    return;
+  }
 };
 
 applicationRequest();

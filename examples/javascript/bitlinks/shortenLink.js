@@ -6,18 +6,23 @@ var bitly = require('../../../lib')(userToken);
 
 var bitlinksRequest = async function () {
   /**
-   * passing parameters 
+   * passing body parameters 
    * -------------------
    * 
-   * group_guid
-   * domain (Default: "bit.ly")
-   * long_url
+   * long_url {string}
+   * domain {string}
+   * group_guid {string}
+   * 
    */
-  var data = {
-    long_url: 'https://www.facebook.com'
+
+  var payload = {
+    long_url: 'string',
+    domain: 'number',
+    group_guid: 'string',
   }
+
   try {
-    var response = await bitly.bitlinks.shortenLink(data);
+    var response = await bitly.bitlinks.shortenLink(payload);
   } catch (error) {
     return;
   }

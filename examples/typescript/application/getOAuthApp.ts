@@ -1,20 +1,26 @@
 'use strict';
 
-const userToken = process.env.BITLY_USER_TOKEN;
+var userToken = process.env.BITLY_USER_TOKEN;
 
 import * as BitlyAPI from 'bitly-node-api';
 
 const bitly = new BitlyAPI();
 
-const applicationRequest = async function () {
-  bitly.setUserToken(userToken);
+bitly.setUserToken(userToken);
 
-  const client_id = 'deaf3dd0e991db18740dc50b4161253251348a20';
-  const response = await bitly.application.getOAuthApp(client_id).catch(error => {
-    if (error) {
-      return;
-    }
-  });
+var applicationRequest = async function () {
+  /**
+   * passing parameters 
+   * -------------------
+   * 
+   * client_id {string}
+   */
+  var client_id = 'string';
+  try {
+    var response = await bitly.application.getOAuthApp(client_id);
+  } catch (error) {
+    return;
+  }
 };
 
 applicationRequest();

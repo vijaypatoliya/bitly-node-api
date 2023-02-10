@@ -1,450 +1,1090 @@
 # bitly-node-api (Bitly Node Rest API)
+
 [![Build Status](https://travis-ci.org/vijaypatoliya/bitly-node-api.svg?branch=master)](https://travis-ci.org/vijaypatoliya/bitly-node-api) [![Stackoverflow Thread](https://img.shields.io/badge/stackoverflow-bitly--node--api-yellowgreen.svg)](https://stackoverflow.com/search?q=nodejs-bitly-node-api)
 
-This API supported Bitly standard REST API that accepts/returns JSON requests. Here is the [API reference] (https://dev.bitly.com/v4_documentation.html)
+This API supported Bitly standard REST API that accepts/returns JSON requests. Here is the [API reference](https://dev.bitly.com/v4_documentation.html)
 
 You can find [examples of JavaScript and TypeScript](https://github.com/vijaypatoliya/bitly-node-api/tree/master/examples). This will help you for faster implementation of Bitly APIs.
 
-##### It does supports EcmaScript 5, EcmaScript 6,  EcmaScript 8, TypeScript, async-await, Promises, Callback!!!
+##### It does supports EcmaScript 5, EcmaScript 6, EcmaScript 8, TypeScript, async-await, Promises, Callback!!!
+
 ##### It does also supports for AWS Lambda like serverless cloud function call.
+
 ##### It supports pure JSON response.
+
 ##### All methods support Promise and Callback both.
 
+##### Please Feel free to create issue for any help!
+
+##### All developers/contributors are requested to open Pull Request/Merge Request on develop branch. 
+
+##### Please make sure Test Cases be passed. 
+
 ## Get started
+
 Using the Bitly API wrapper for Node.js is really simple.
 Given that you already have a Node.js project with NPM setup just follow these steps:
 
-**Install the dependency**
+## Installation
+```bash
+npm install bitly-node-api --save
 ```
-npm install --save bitly-node-api
-```
+
+## Pull Request
+- Contributors can send their Pull Request to `develop` branch.
+- Kindly validate test cases & linting before opening new PR.
+
+## Do you need an expert?
+Are you finding a developer or team for your world-class enterprise product development? If yes, please send email to. Submit your project request [here](mailto:osi.vijay@gmail.com). Originally by [Vijay Patoliya](https://github.com/vijaypatoliya).
 
 ## Configuration Using JavaScript
 
 **Already you having access token then use below configuration**
+
 ```bash
 export BITLY_USER_TOKEN=ACCESS_TOKEN
 ```
 
 ```js
-var bitly = require('bitly-node-api')('YOUR_ACCESS_TOKEN');
+var bitly = require("bitly-node-api")("YOUR_ACCESS_TOKEN");
 ```
 
-**If you have not access token, Get access token using below configuration and example**
+**If you don't have access token then get access token using below configuration and example**
 
 ```js
-var bitly = require('bitly-node-api');
+var bitly = require("bitly-node-api");
 
 bitly.setApiKey(clientId, clientSecret);
 
 var options = {
-  username: 'Username',
-  password: 'Password'
+  username: "Username",
+  password: "Password",
 };
 var response = bitly.application.getOAuthToken(options);
-if(response && response.access_token) {
+if (response && response.access_token) {
   bitly.setUserToken(response.access_token);
 }
 ```
 
 ## Configuration Using TypeScript
+
 ```js
-import * as BitlyAPI from 'bitly-node-api';
+import * as BitlyAPI from "bitly-node-api";
 const bitly = new BitlyAPI();
-bitly.setUserToken('YOUR_ACCESS_TOKEN');
+bitly.setUserToken("YOUR_ACCESS_TOKEN");
 ```
 
-## Test Cases
-```bash
-npm run test.mocha
-```
-
-## Debugging
-```bash
-export DEBUG=bitly:*
-```
 
 ```
-Originally by [Vijay Patoliya](https://github.com/vijaypatoliya) (osi.vijay@gmail.com).
+Originally by osi.vijay@gmail.com : [Vijay Patoliya](https://github.com/vijaypatoliya).
 ```
- 
+
 ## Examples
 
-#### Bitlinks
-    Get Metrics for a Bitlink by countries
-    /* Return metrics about the countries referring click traffic to a single Bitlink */
-    
-    bitly.setUserToken(userToken);
-    var bitlink = 'bitly.is/2rAZFZ1';
-    var data = {
-        unit: 'minute'
-    }
-    try {
-        var response = await bitly.bitlinks.getBitlinkMetricsByCountries(bitlink, data);
-    } catch (error) {
-        return;
-    }
-    -------------------------------------------------------------------------------------
-    Expand a Bitlink
-    /* Returns public information for a Bitlink */
-    
-    bitly.setUserToken(userToken);
-    var data = {
-        bitlink_id: 'bitly.is/2rAZFZ1'
-    }
-    try {
-        var response = await bitly.bitlinks.getBitlinkPublicInfo(data);
-    } catch (error) {
-        return;
-    }
-    -------------------------------------------------------------------------------------
-    Get Metrics for a Bitlink by referrers
-    /* Return metrics about the referrers referring click traffic to a single Bitlink */
-    
-    bitly.setUserToken(userToken);
-    var bitlink = 'bitly.is/2rAZFZ1';
-    var data = {
-        unit: 'minute'
-    }
-    try {
-        var response = await bitly.bitlinks.getBitlinkMetricsByReferrers(bitlink, data);
-    } catch (error) {
-        return;
-    }
-    -------------------------------------------------------------------------------------
-    Create a Bitlink
-    /* Convert a long url to a Bitlink and set additional parameters */
-    
-    bitly.setUserToken(userToken);
-    var data = {
-        long_url: 'https://www.google.com'
-    }
-    try {
-        var response = await bitly.bitlinks.createBitlink(data);
-    } catch (error) {
-        return;
-    }
-    -------------------------------------------------------------------------------------
-    Retrieve Bitlinks by Group
-    /* Retrieve a paginated collection of Bitlinks for a Group */
-    
-    bitly.setUserToken(userToken);
-    var group_guid = 'Bibh7CqXlyA';
-    var data = {
-        size: 10
-    }
-    try {
-        var response = await bitly.bitlinks.getBitlinksByGroup(group_guid, data);
-    } catch (error) {
-        return;
-    }
-    -------------------------------------------------------------------------------------
-    Get Clicks Summary for a Bitlink
-    /* Return the click counts for a specified Bitlink. This rolls up all the data into a single field of clicks */
-    
-    bitly.setUserToken(userToken);
-    var bitlink = 'bitly.is/2rAZFZ1';
-    var data = {
-        unit: 'minute'
-    }
-    try {
-        var response = await bitly.bitlinks.getBitlinkClicksSummary(bitlink, data);
-    } catch (error) {
-        return;
-    }
-    -------------------------------------------------------------------------------------
-    Get Clicks for a Bitlink
-    /* Return the click counts for a specified Bitlink. This returns an array with clicks based on a date */
-    
-    bitly.setUserToken(userToken);
-    var bitlink = 'bitly.is/2rAZFZ1';
-    var data = {
-        unit: 'minute'
-    }
-    try {
-        var response = await bitly.bitlinks.getBitlinkClicks(bitlink, data);
-    } catch (error) {
-        return;
-    }
-    -------------------------------------------------------------------------------------
-    Update a Bitlink
-    /* Update fields in the Bitlink */
-    
-    bitly.setUserToken(userToken);
-    var bitlink = 'bitly.is/2rAZFZ1';
-    var data = {
-        title: 'Get Group Preference',
-        created_by: 'Patoliya'
-    }
-    try {
-        var response = await bitly.bitlinks.updateBitlink(bitlink, data);
-    } catch (error) {
-        return;
-    }
-    -------------------------------------------------------------------------------------
-    Retrieve a Bitlink
-    /* Returns information for a Bitlink */
-    
-    bitly.setUserToken(userToken);
-    var bitlink = 'bitly.is/2rAZFZ1';
-    try {
-        var response = await bitly.bitlinks.getBitlinkInfo(bitlink);
-    } catch (error) {
-        return;
-    }
-    -------------------------------------------------------------------------------------
-    Shorten a Link
-    /* Convert a long url to a Bitlink */
-    
-    bitly.setUserToken(userToken);
-    var data = {
-        long_url: 'https://www.facebook.com'
-    }
-    try {
-        var response = await bitly.bitlinks.shortenLink(data);
-    } catch (error) {
-        return;
-    }
-    -------------------------------------------------------------------------------------
-    Get Metrics for a Bitlink by referrers by domain
-    /* Group referrers metrics about a single Bitlink */
-    
-    bitly.setUserToken(userToken);
-    var bitlink = 'bitly.is/2rAZFZ1';
-    var data = {
-        unit: 'minute'
-    }
-    try {
-        var response = await bitly.bitlinks.getBitlinkMetricsByReferrersByDomain(bitlink, data);
-    } catch (error) {
-        return;
-    }
-    -------------------------------------------------------------------------------------
-    Retrieve Sorted Bitlinks for Group
-    /* Retrieve a paginated response for Bitlinks that are sorted for the Group */
-    
-    bitly.setUserToken(userToken);
-    var group_guid = 'Bibh7CqXlyA';
-    var sort = 'clicks';
-    var data = {
-        size: 10
-    }
-    try {
-        var response = await bitly.bitlinks.getGroupSortedBitlinks(group_guid, sort, data);
-    } catch (error) {
-        return;
-    }
-    -------------------------------------------------------------------------------------
-    Get Metrics for a Bitlink by referring domains
-    /* Rollup the click counts to a referrer about a single Bitlink */
-    
-    bitly.setUserToken(userToken);
-    var bitlink = 'bitly.is/2rAZFZ1';
-    var data = {
-        size: 10
-    }
-    try {
-        var response = await bitly.bitlinks.getBitlinkMetricsByReferringDomains(bitlink, data);
-    } catch (error) {
-        return;
-    }
+1. [BITLINKS](#bitlinks)
 
-#### Retrieve OAuth App
-**Retrieve the details for the provided OAuth App client ID**
+2. [BSDS](#bsds)
 
-    bitly.setUserToken(userToken);
-    var client_id = 'deaf3dd0e991db18740dc50b4161253251348a20';
-    try {
-        var response = bitly.application.getOAuthApp(client_id);
-    } catch (error) {
-        return;
-    }
-    
-#### Groups 
-    Retrieve Group Preferences
-    /* Retrieve preferences for a specific group */
+3. [CAMPAIGNS](#campaigns)
 
-    bitly.setUserToken(userToken);
-    var group_guid = 'Bibh7CqXlyA';
-    try {
-        var response = await bitly.groups.getGroupPreferences(group_guid);
-    } catch (error) {
-        return;
-    }
-    -------------------------------------------------------------------------------------
-    Update Group Preferences
-    /* Retrieve preferences for a specific group */
+4. [CUSTOM BITLINKS](#custom-bitlinks)
 
-    bitly.setUserToken(userToken);
-    var group_guid = 'Bibh7CqXlyA';
-    try {
-        var response = await bitly.groups.getGroupPreferences(group_guid);
-    } catch (error) {
-        return;
-    }
-    -------------------------------------------------------------------------------------
-    Retrieve Bitlinks by Group
-    /* Retrieve a paginated collection of Bitlinks for a Group */
+5. [GROUPS](#groups)
 
-    bitly.setUserToken(userToken);
-    var group_guid = 'Bibh7CqXlyA';
-    var data = {
-        size: 10
-    }
-    try {
-        var response = await bitly.groups.getGroupBitlinks(group_guid, data);
-    } catch (error) {
-        return;
-    }
-    -------------------------------------------------------------------------------------
-    Retrieve Tags by Group
-    /* Retrieve the currently used tags for a group */
+6. [ORGANIZATIONS](#organizations)
 
-    bitly.setUserToken(userToken);
-    var group_guid = 'Bibh7CqXlyA';
-    try {
-        var response = await bitly.groups.getCurrentUsedGroupTags(group_guid);
-    } catch (error) {
-        return;
-    }
-    -------------------------------------------------------------------------------------
-    Get Click Metrics for a Group by countries
-    /* Return metrics about the countries referring click traffic rolled up to a Group */
+7. [USER](#user)
 
-    bitly.setUserToken(userToken);
-    var group_guid = 'Bibh7CqXlyA';
-    try {
-        var response = await bitly.groups.getGroupClickMetricsByCountries(group_guid);
-    } catch (error) {
-        return;
-    }
-    -------------------------------------------------------------------------------------
-    Get Click Metrics for a Group by referring networks
-    /* Return metrics about the referring network click traffic rolled up to a Group */
+8. [WEBHOOKS](#webhooks)
 
-    bitly.setUserToken(userToken);
-    var group_guid = 'Bibh7CqXlyA';
-    try {
-        var response = await bitly.groups.getGroupClickMetricsByReferringNetworks(group_guid);
-    } catch (error) {
-        return;
-    }
-    -------------------------------------------------------------------------------------
-    Retrieve Group Shorten Counts
-    /* Get all the shorten counts for a specific group */
+---
 
-    bitly.setUserToken(userToken);
-    var group_guid = 'Bibh7CqXlyA';
-    try {
-        var response = await bitly.groups.getGroupShortenCounts(group_guid);
-    } catch (error) {
-        return;
-    }
-    -------------------------------------------------------------------------------------
-    Retrieve Groups
-    /* Retrieve a list of Groups */
+> ### [BITLINKS](#index)
 
-    bitly.setUserToken(userToken);
-    var data = {};
-    try {
-        var response = await bitly.groups.getGroups(data);
-    } catch (error) {
-        return;
-    }
-    -------------------------------------------------------------------------------------
-    Retrieve Sorted Bitlinks for Group
-    /* Retrieve a paginated response for Bitlinks that are sorted for the Group */
+```js
+/** Bulk update */
+var group_guid = "string";
 
-    bitly.setUserToken(userToken);
-    var group_guid = 'Bibh7CqXlyA';
-    var sort = 'clicks';
-    var data = {};
-    try {
-        var response = await bitly.groups.getGroupsSortedBitlinks(group_guid, sort, data);
-    } catch (error) {
-        return;
-    }
-    -------------------------------------------------------------------------------------
-    Update a Group
-    /* Update the details of a group */
+var payload = {
+  action: "string",
+  archive: "boolean",
+  add_tags: ["array of string"],
+  remove_tags: ["array of string"],
+  links: ["array of string"],
+};
+try {
+  var response = await bitly.bitlinks.bulkUpdate(group_guid, payload);
+} catch (error) {
+  return;
+}
+```
 
-    bitly.setUserToken(userToken);
-    var group_guid = 'Bibh7CqXlyA';
-    var data = {
-        name: 'Patoliya'
-    };
-    try {
-        var response = await bitly.groups.updateGroup(group_guid, data);
-    } catch (error) {
-        return;
-    }
-    -------------------------------------------------------------------------------------
-    Retrieve a Group
-    /* Retrive details for a group */
+```js
+/** Create */
+var payload = {
+  long_url: "https://www.google.com",
+};
+try {
+  var response = await bitly.bitlinks.create(payload);
+} catch (error) {
+  return;
+}
+```
 
-    bitly.setUserToken(userToken);
-    var group_guid = 'Bibh7CqXlyA';
-    try {
-        var response = await bitly.groups.getGroup(group_guid);
-    } catch (error) {
-        return;
-    }
-    
-#### Organizations
-    Retrieve an Organization
-    /* Retrive details for an organization */
-    
-    bitly.setUserToken(userToken);
-    var organization_guid = 'Oibh7yznRDr';
-    try {
-        var response = await bitly.organizations.getOrganization(organization_guid);
-    } catch (error) {
-        return;
-    }
-    -------------------------------------------------------------------------------------
-    Retrieve Organizations
-    /* Retrieve a list of organizations */
-    
-    bitly.setUserToken(userToken);
-    try {
-        var response = await bitly.organizations.getOrganizations();
-    } catch (error) {
-        return;
-    }
-    -------------------------------------------------------------------------------------
-    Retrieve Organization Shorten Counts
-    /* Retrieve all the shorten counts for a specific organization */
-    
-    bitly.setUserToken(userToken);
-    var organization_guid = 'Oibh7yznRDr';
-    try {
-        var response = await bitly.organizations.getOrganizationShortenCounts(organization_guid);
-    } catch (error) {
-        return;
-    }
-    
-#### User
-    Update a User
-    /* Update fields in the user */
-    
-    bitly.setUserToken(userToken);
-    var data = {
-        name: 'patoliya',
-        default_group_guid: 'Bibh7CqXlyA'
-    }
-    try {
-        var response = await bitly.user.updateUser(data);
-    } catch (error) {
-        return;
-    }
-    -------------------------------------------------------------------------------------
-    Retrieve a User
-    /* Retrive information for the current authenticated user */
-    
-    bitly.setUserToken(userToken);
-    try {
-        var response = await bitly.user.getUser();
-    } catch (error) {
-        return;
-    }
-    
+```js
+/** Create QR */
+
+var bitlink = "bitly.is/2rAZFZ1";
+
+var payload = {
+  color: "string",
+  exclude_bitly_logo: "boolean",
+  image_format: "string",
+  logo_image_guid: "string",
+};
+
+try {
+  var response = await bitly.bitlinks.createQR(bitlink, payload);
+} catch (error) {
+  return;
+}
+```
+
+```js
+/** Delete */
+
+var bitlink = "bitly.is/2rAZFZ1";
+
+try {
+  var response = await bitly.bitlinks.delete(bitlink);
+} catch (error) {
+  return;
+}
+```
+
+```js
+/** Expand */
+var bitlink = "bitly.is/2rAZFZ1";
+try {
+  var response = await bitly.bitlinks.expand(bitlink);
+} catch (error) {
+  return;
+}
+```
+
+```js
+/** Get */
+
+var bitlink = "bitly.is/2rAZFZ1";
+try {
+  var response = await bitly.bitlinks.get(bitlink);
+} catch (error) {
+  return;
+}
+```
+
+```js
+/** Get by group */
+var group_guid = "Bibh7CqXlyA";
+var payload = {
+  size: "number",
+  page: "number",
+  keyword: "string",
+  query: "string",
+  created_before: "number",
+  created_after: "number",
+  modified_after: "number",
+  archived: "string",
+  deeplinks: "string",
+  domain_deeplinks: "string",
+  campaign_guid: "string",
+  channel_guid: "string",
+  custom_bitlink: "string",
+  tags: "array",
+  launchpad_ids: "array",
+  encoding_login: "array",
+};
+try {
+  var response = await bitly.bitlinks.getByGroup(group_guid, payload);
+} catch (error) {
+  return;
+}
+```
+
+```js
+/** Get clicks */
+
+var bitlink = "bitly.is/2rAZFZ1";
+var payload = {
+  units: "integer",
+  unit: "string",
+  unit_reference: "string",
+};
+
+try {
+  var response = await bitly.bitlinks.getClicks(bitlink, payload);
+} catch (error) {
+  return;
+}
+```
+
+```js
+/** Get clicks summary */
+
+var bitlink = "bitly.is/2rAZFZ1";
+var payload = {
+  units: "integer",
+  unit: "string",
+  unit_reference: "string",
+};
+
+try {
+  var response = await bitly.bitlinks.getClicksSummary(bitlink, payload);
+} catch (error) {
+  return;
+}
+```
+
+```js
+/** Get metrics by city */
+
+var bitlink = "bitly.is/2rAZFZ1";
+var payload = {
+  unit: "minute",
+};
+try {
+  var response = await bitly.bitlinks.getMetricsByCity(bitlink, payload);
+} catch (error) {
+  return;
+}
+```
+
+```js
+/** Get metrics by country */
+
+var bitlink = "bitly.is/2rAZFZ1";
+var payload = {
+  units: "number",
+  unit: "string",
+  size: "number",
+  unit_reference: "string",
+};
+
+try {
+  var response = await bitly.bitlinks.getMetricsByCountry(bitlink, payload);
+} catch (error) {
+  return;
+}
+```
+
+```js
+/** Get Metrics by device type */
+
+var bitlink = "bitly.is/2rAZFZ1";
+var payload = {
+  units: "number",
+  unit: "string",
+  size: "number",
+  unit_reference: "string",
+};
+
+try {
+  var response = await bitly.bitlinks.getMetricsByDeviceType(bitlink, payload);
+} catch (error) {
+  return;
+}
+```
+
+```js
+/** Get metrics by referrers */
+
+var bitlink = "bitly.is/2rAZFZ1";
+var payload = {
+  units: "number",
+  unit: "string",
+  size: "number",
+  unit_reference: "string",
+};
+
+try {
+  var response = await bitly.bitlinks.getMetricsByReferrers(bitlink, payload);
+} catch (error) {
+  return;
+}
+```
+
+```js
+/** Get metrics by referrers domain */
+
+var bitlink = "bitly.is/2rAZFZ1";
+var payload = {
+  units: "number",
+  unit: "string",
+  size: "number",
+  unit_reference: "string",
+};
+
+try {
+  var response = await bitly.bitlinks.getMetricsByReferrersDomain(
+    bitlink,
+    payload
+  );
+} catch (error) {
+  return;
+}
+```
+
+```js
+/** Get metrics by referring domain */
+
+var bitlink = "bitly.is/2rAZFZ1";
+var payload = {
+  units: "number",
+  unit: "string",
+  size: "number",
+  unit_reference: "string",
+};
+
+try {
+  var response = await bitly.bitlinks.getMetricsByReferringDomain(
+    bitlink,
+    payload
+  );
+} catch (error) {
+  return;
+}
+```
+
+```js
+/** Get QR */
+
+var bitlink = "bitly.is/2rAZFZ1";
+try {
+  var response = await bitly.bitlinks.getQR(bitlink);
+} catch (error) {
+  return;
+}
+```
+
+```js
+/** List sorted by group */
+
+var group_guid = "Bibh7CqXlyA";
+var sort = "clicks";
+var payload = {
+  size: 10,
+};
+try {
+  var response = await bitly.bitlinks.listSortedByGroup(
+    group_guid,
+    sort,
+    payload
+  );
+} catch (error) {
+  return;
+}
+```
+
+```js
+/** shorted link */
+
+var group_guid = "string";
+var sort = "string";
+
+var payload = {
+  unit: "string",
+  units: "number",
+  unit_reference: "string",
+  size: "number",
+};
+
+try {
+  var response = await bitly.bitlinks.shortedLink(group_guid, sort, payload);
+} catch (error) {
+  return;
+}
+```
+
+```js
+/** Update */
+
+var bitlink = "bitly.is/2rAZFZ1";
+
+var payload = {
+  references: {
+    /* any */
+  },
+  link: "string",
+  id: "string",
+  long_url: "string",
+  title: "string",
+  archived: "boolean",
+  created_at: "string",
+  created_by: "string",
+  client_id: "string",
+  custom_bitlinks: ["string"],
+  tags: ["string"],
+  launchpad_ids: ["string"],
+  deeplinks: [
+    {
+      guid: "string",
+      bitlink: "string",
+      app_uri_path: "string",
+      install_url: "string",
+      app_guid: "string",
+      os: "string",
+      install_type: "string",
+      created: "string",
+      modified: "string",
+      brand_guid: "string",
+    },
+  ],
+  is_deleted: "boolean",
+};
+
+try {
+  var response = await bitly.bitlinks.update(bitlink, payload);
+} catch (error) {
+  return;
+}
+```
+
+```js
+/** Update QR */
+
+var bitlink = "bitly.is/2rAZFZ1";
+
+var payload = {
+  color: "string",
+  exclude_bitly_logo: "boolean",
+  image_format: "string",
+  logo_image_guid: "string",
+};
+
+try {
+  var response = await bitly.bitlinks.updateQR(bitlink, payload);
+} catch (error) {
+  return;
+}
+```
+
+> ### [BSDS](#index)
+
+```js
+/** Get group overrides */
+
+var group_guid = "string";
+var payload = {
+  group_guid: ["array"],
+  created_after: "number",
+  limit: "number",
+  offset: "number",
+  bsd: ["array"],
+};
+
+try {
+  var response = await bitly.bsds.getGroupOverrides(group_guid, payload);
+} catch (error) {
+  return;
+}
+```
+
+```js
+/** List */
+
+try {
+  var response = await bitly.bsds.list();
+} catch (error) {
+  return;
+}
+```
+
+> ### [CAMPAIGNS](#index)
+
+```js
+/** Create */
+var payload = {
+  group_guid: "string",
+  name: "string",
+  description: "string",
+  channel_guids: ["array of string"],
+};
+
+try {
+  var response = await bitly.campaigns.create(payload);
+} catch (error) {
+  return;
+}
+```
+
+```js
+/** Create channel */
+var payload = {
+  name: "string",
+  guid: "string",
+  creted: "string",
+  modified: "string",
+  group_guid: "string",
+  bitlinks: [
+    {
+      campaign_guid: "string",
+      bitlink_id: "string",
+    },
+  ],
+};
+
+try {
+  var response = await bitly.campaigns.createChannel(payload);
+} catch (error) {
+  return;
+}
+```
+
+```js
+/** Get */
+
+try {
+  var response = await bitly.campaigns.get(campaign_guid);
+} catch (error) {
+  return;
+}
+```
+
+```js
+/** Get channel */
+
+var channel_guid = "string";
+try {
+  var response = await bitly.campaigns.getChannel(channel_guid);
+} catch (error) {
+  return;
+}
+```
+
+```js
+/** List */
+try {
+  var payload = {
+    group_guid: "string",
+  };
+
+  var response = await bitly.campaigns.list(payload);
+} catch (error) {
+  return;
+}
+```
+
+```js
+/** List channels */
+var payload = {
+  group_guid: "string",
+  campaign_guid: "string",
+};
+try {
+  var response = await bitly.campaigns.listChannels(payload);
+} catch (error) {
+  return;
+}
+```
+
+```js
+/** Update */
+
+var campaign_guid = "string";
+var payload = {
+  group_guid: "string",
+  name: "string",
+  description: "string",
+  channel_guids: ["array of string"],
+};
+
+try {
+  var response = await bitly.campaigns.update(campaign_guid, payload);
+} catch (error) {
+  return;
+}
+```
+
+```js
+/** Update channel */
+
+var channel_guid = "string";
+
+var payload = {
+  name: "string",
+  guid: "string",
+  creted: "string",
+  modified: "string",
+  group_guid: "string",
+  bitlinks: [
+    {
+      campaign_guid: "string",
+      bitlink_id: "string",
+    },
+  ],
+};
+
+try {
+  var response = await bitly.campaigns.updateChannel(channel_guid, payload);
+} catch (error) {
+  return;
+}
+```
+
+> ### [CUSTOM BITLINKS](#index)
+
+```js
+/** Add */
+var payload = {
+  custom_bitlink: "https://www.google.com",
+  bitlink_id: "string",
+};
+try {
+  var response = await bitly.customBitlinks.add(payload);
+} catch (error) {
+  return;
+}
+```
+
+```js
+/** Get */
+
+var custom_bitlink = "string";
+try {
+  var response = await bitly.customBitlinks.get(custom_bitlink);
+} catch (error) {
+  return;
+}
+```
+
+```js
+/** Get click for entire history */
+
+var custom_bitlink = "string";
+var payload = {
+  units: "integer",
+  unit: "string",
+  unit_reference: "string",
+};
+
+try {
+  var response = await bitly.customBitlinks.getClicksForEntireHistory(
+    custom_bitlink,
+    payload
+  );
+} catch (error) {
+  return;
+}
+```
+
+```js
+/** Get metrics for custom destination  */
+var custom_bitlink = "string";
+var payload = {
+  units: "integer",
+  unit: "string",
+  unit_reference: "string",
+};
+
+try {
+  var response = await bitly.customBitlinks.getMetricsForCustomDestination(
+    custom_bitlink,
+    payload
+  );
+} catch (error) {
+  return;
+}
+```
+
+```js
+/** Update */
+
+var custom_bitlink = "bitly.is/2rAZFZ1";
+
+var payload = {
+  bitlink_id: "string",
+};
+
+try {
+  var response = await bitly.customBitlinks.update(custom_bitlink, payload);
+} catch (error) {
+  return;
+}
+```
+
+> ### [GROUPS](#index)
+
+```js
+/** Get */
+
+var group_guid = "string";
+
+try {
+  var response = await bitly.groups.get(group_guid);
+} catch (error) {
+  return;
+}
+```
+
+```js
+/** Get click metrics by city */
+
+var group_guid = "string";
+var payload = {
+  unit: "string",
+  units: "number",
+  size: "number",
+  unit_reference: "string",
+};
+try {
+  var response = await bitly.groups.getClickMetricsByCity(group_guid, payload);
+} catch (error) {
+  return;
+}
+```
+
+```js
+/** Get click metrics by country */
+
+var group_guid = "string";
+var payload = {
+  unit: "string",
+  units: "number",
+  size: "number",
+  unit_reference: "string",
+};
+
+try {
+  var response = await bitly.groups.getClickMetricsByCountry(
+    group_guid,
+    payload
+  );
+} catch (error) {
+  return;
+}
+```
+
+```js
+/** Get click metrics by device type */
+
+var group_guid = "string";
+var payload = {
+  unit: "string",
+  units: "number",
+  size: "number",
+  unit_reference: "string",
+};
+try {
+  var response = await bitly.groups.getClickMetricsByDeviceType(
+    group_guid,
+    payload
+  );
+} catch (error) {
+  return;
+}
+```
+
+```js
+/** Get click metrics by referring networks */
+
+var group_guid = "string";
+
+try {
+  var response = await bitly.groups.getClickMetricsByReferringNetworks(
+    group_guid
+  );
+} catch (error) {
+  return;
+}
+```
+
+```js
+/** Get clicks */
+
+var group_guid = "string";
+
+try {
+  var response = await bitly.groups.getClicks(group_guid);
+} catch (error) {
+  return;
+}
+```
+
+```js
+/** Get preferences */
+
+var group_guid = "string";
+try {
+  var response = await bitly.groups.getPreferences(group_guid);
+} catch (error) {
+  return;
+}
+```
+
+```js
+/** Get QR */
+
+var group_guid = "string";
+
+try {
+  var response = await bitly.groups.getQR(group_guid);
+} catch (error) {
+  return;
+}
+```
+
+```js
+/** Get shorten counts */
+
+var group_guid = "string";
+var payload = {
+  unit: "string",
+  units: "number",
+  unit_reference: "string",
+};
+try {
+  var response = await bitly.groups.getShortenCounts(group_guid, payload);
+} catch (error) {
+  return;
+}
+```
+
+```js
+/** Get list */
+var payload = {
+  organization_guid: "string",
+};
+try {
+  var response = await bitly.groups.list(payload);
+} catch (error) {
+  return;
+}
+```
+
+```js
+/** Get list tags */
+
+var group_guid = "string";
+try {
+  var response = await bitly.groups.listTags(group_guid);
+} catch (error) {
+  return;
+}
+```
+
+```js
+/** update */
+var group_guid = "Bibh7CqXlyA";
+var payload = {
+  name: "string",
+  organization_guid: "string",
+  bsds: ["string"],
+};
+
+try {
+  var response = await bitly.groups.update(group_guid, payload);
+} catch (error) {
+  return;
+}
+```
+
+```js
+/** Update preferences */
+
+var group_guid = "string";
+var payload = {
+  group_guid: "string",
+  domain_preference: "bit.ly",
+};
+
+try {
+  var response = await bitly.groups.updatePreferences(group_guid, payload);
+} catch (error) {
+  return;
+}
+```
+
+> ### [ORGANIZATIONS](#index)
+
+```js
+/** Get */
+
+var organization_guid = "string";
+
+try {
+  var response = await bitly.organizations.get(organization_guid);
+} catch (error) {
+  return;
+}
+```
+
+```js
+/** Get plan limits */
+var organization_guid = "string";
+try {
+  var response = await bitly.organizations.getPlanLimits(organization_guid);
+} catch (error) {
+  return;
+}
+```
+
+```js
+/** Get shorten Counts */
+
+var organization_guid = "string";
+
+var payload = {
+  unit: "string",
+  units: "number",
+  unit_reference: "string",
+};
+
+try {
+  var response = await bitly.organizations.getShortenCounts(
+    organization_guid,
+    payload
+  );
+} catch (error) {
+  return;
+}
+```
+
+```js
+/** List */
+try {
+  var response = await bitly.organizations.list();
+} catch (error) {
+  return;
+}
+```
+
+> ### [USER](#index)
+
+```js
+/** Get */
+try {
+  var response = await bitly.user.get();
+} catch (error) {
+  return;
+}
+```
+
+```js
+/** Get platform limits */
+var payload = {
+  path: "string",
+};
+
+try {
+  var response = await bitly.user.getPlatformLimits(payload);
+} catch (error) {
+  return;
+}
+```
+
+```js
+/** Update */
+
+var payload = {
+  name: "string",
+  default_group_guid: "string",
+};
+
+try {
+  var response = await bitly.user.update(payload);
+} catch (error) {
+  return;
+}
+```
+
+> ### [WEBHOOKS](#index)
+
+```js
+/** Create */
+
+var payload = {
+  organization_guid: "string",
+  name: "string",
+  event: "string",
+  url: "string",
+  is_active: "boolean",
+  group_guid: "string",
+  oauth_url: "string",
+  client_id: "string",
+  client_secret: "string",
+  fetch_tags: "boolean",
+};
+
+try {
+  var response = await bitly.webhooks.create(payload);
+} catch (error) {
+  return;
+}
+```
+
+```js
+/** Delete */
+var webhook_guid = "string";
+try {
+  var response = await bitly.webhooks.delete(webhook_guid);
+} catch (error) {
+  return;
+}
+```
+
+```js
+/** Get */
+try {
+  var response = await bitly.webhooks.get(webhook_guid);
+} catch (error) {
+  return;
+}
+```
+
+```js
+/** List */
+
+try {
+  var organigation_guid = "string";
+
+  var response = await bitly.webhooks.list(organigation_guid);
+} catch (error) {
+  return;
+}
+```
+
+```js
+/** Update */
+
+var webhook_guid = "string";
+var payload = {
+  guid: "string",
+  organization_guid: "string",
+  name: "string",
+  event: "string",
+  url: "string",
+  is_active: "boolean",
+  group_guid: "string",
+  oauth_url: "string",
+  client_id: "string",
+  client_secret: "string",
+  fetch_tags: "boolean",
+};
+
+try {
+  var response = await bitly.webhooks.update(webhook_guid, payload);
+} catch (error) {
+  return;
+}
+```
+
+```js
+/** Verify */
+
+var webhook_guid = "string";
+try {
+  var response = await bitly.webhooks.verify(webhook_guid);
+} catch (error) {
+  return;
+}
+```
