@@ -1,6 +1,6 @@
 # bitly-node-api (Bitly Node Rest API)
 
-[![Build Status](https://travis-ci.org/vijaypatoliya/bitly-node-api.svg?branch=master)](https://travis-ci.org/vijaypatoliya/bitly-node-api) [![Stackoverflow Thread](https://img.shields.io/badge/stackoverflow-bitly--node--api-yellowgreen.svg)](https://stackoverflow.com/search?q=nodejs-bitly-node-api)
+[![Stackoverflow Thread](https://img.shields.io/badge/stackoverflow-bitly--node--api-yellowgreen.svg)](https://stackoverflow.com/search?q=nodejs-bitly-node-api)
 
 This API supported Bitly standard REST API that accepts/returns JSON requests. Here is the [API reference](https://dev.bitly.com/v4_documentation.html)
 
