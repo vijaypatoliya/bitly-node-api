@@ -1,6 +1,6 @@
 {
   "name": "bitly-node-api",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "bitly api wrapper",
   "keywords": [
     "bitly",

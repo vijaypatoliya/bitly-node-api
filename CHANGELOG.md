@@ -1,3 +1,6 @@
+0.0.6 July 10, 2025
+  - Update vulnerabilities
+
 0.0.5 Feb 09, 2023
   - Added new apis support
 
